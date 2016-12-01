@@ -4,6 +4,7 @@ class Game
     @word = set_word().split('')
     @wrong_counter = 0
     @wrong_letters = []
+    @game_over = false
   end
   define_method(:word) do
     @word
@@ -13,6 +14,9 @@ class Game
   end
   define_method(:wrong_letters) do
     @wrong_letters
+  end
+  define_method(:game_over) do
+    @game_over
   end
   define_method(:hide) do
     @hidden = []
@@ -36,8 +40,14 @@ class Game
     if temp_hidden == @hidden
       @wrong_counter += 1
       @wrong_letters.push(letter_guessed)
+      self.is_game_over()
     end
     @guesses += 1
     @hidden
+  end
+  define_method(:is_game_over) do
+    if wrong_counter >= 6
+      @game_over = true
+    end
   end
 end
