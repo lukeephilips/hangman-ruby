@@ -9,6 +9,9 @@ class Game
   define_method(:word) do
     @word
   end
+  define_method(:hidden) do
+    @hidden
+  end
   define_method(:wrong_counter) do
     @wrong_counter
   end
@@ -31,23 +34,28 @@ class Game
     word = words[0]
   end
   define_method(:guess) do |letter_guessed|
-    temp_hidden = @hidden
-    @word.each.with_index do |letter, index|
-      if letter == letter_guessed
-        @hidden[index] = letter_guessed
+    if @game_over == false
+      temp_hidden = @hidden
+      @word.each.with_index do |letter, index|
+        if letter == letter_guessed
+          @hidden[index] = letter_guessed
+        end
       end
+      if temp_hidden == @hidden
+        @wrong_counter += 1
+        @wrong_letters.push(letter_guessed)
+        self.is_game_over()
+      end
+      @guesses += 1
+      @hidden
+    else
+       "The Game is over. You lost."
     end
-    if temp_hidden == @hidden
-      @wrong_counter += 1
-      @wrong_letters.push(letter_guessed)
-      self.is_game_over()
-    end
-    @guesses += 1
-    @hidden
   end
   define_method(:is_game_over) do
     if wrong_counter >= 6
       @game_over = true
+      puts("Game Over")
     end
   end
 end

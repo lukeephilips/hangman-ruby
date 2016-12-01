@@ -39,4 +39,17 @@ describe('Game') do
       expect(new_game.game_over).to(eq(true))
     end
   end
+  describe('it guesses incorrectly 1 time too many') do
+    it('#guess') do
+      new_game = Game.new()
+      new_game.hide()
+      new_game.guess('r')
+      new_game.guess('l')
+      new_game.guess('f')
+      new_game.guess('q')
+      new_game.guess('w')
+      new_game.guess('z')
+      expect(new_game.guess('m')).to(eq('The Game is over. You lost.'))
+    end
+  end
 end
