@@ -3,10 +3,8 @@
   <h1>Hangman</h1>
 </div>
 
-<h2><%= @game.hidden %></h2>
-<h3>You guessed: '<%= @user_guess %>'</h3>
 
-<form class="game-board" action="/" method="post">
+<form class="game-board" action="/test" method="post">
   <label for="guess"></label>
   <input type="text" name="guess" class="form-control">
   <button type="submit">Go</button>
