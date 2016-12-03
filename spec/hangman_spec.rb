@@ -45,7 +45,7 @@ describe('Game') do
       new_game.guess('z')
       expect(new_game.wrong_letters).to(eq(["r",'l','f','q','w','z']))
       expect(new_game.wrong_guesses).to(eq(6))
-      expect(new_game.game_over).to(eq(true))
+      expect(new_game.game_state).to(eq(:game_over))
     end
   end
   describe('it guesses incorrectly 1 time too many') do

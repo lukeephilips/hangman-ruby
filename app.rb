@@ -13,7 +13,7 @@ end
 
 post '/' do
   @game = Game.active
-  @user_guess = params.fetch('guess')
+  @user_guess = params.fetch('guess').downcase
   @game.guess(@user_guess)
   erb(:index)
 end

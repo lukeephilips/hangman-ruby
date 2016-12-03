@@ -1,13 +1,27 @@
 
 <div class="well">
-  <h1>Hangman</h1>
+  <div class="row">
+    <div class="col-sm-6">
+      <h3><%= @game.message %></h3>
+      <h1><%= @game.hidden.join(' ') %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <form class="game-board" action="/" method="post">
+        <label for="guess"></label>
+        <input type="text" name="guess" class="form-control">
+        <button type="submit" class="btn btn-primary">Go</button>
+      </form>
+      <h3>Your guess: <%= @user_guess %></h3>
+      <h4>You have guessed: <%= @game.wrong_letters.join(' ') %></h4>
+    </div>
+    <div class="col-sm-6">
+
+      <h2>Wrong guesses: <%= @game.wrong_guesses %></h2>
+      <h2>Guesses remaining: <%= 6 - @game.wrong_guesses %></h2>
+    </div>
+  </div>
+  <div class="row">
+  </div>
 </div>
-
-<h2><%= @game.hidden %></h2>
-<h3>You guessed: '<%= @user_guess %>'</h3>
-
-<form class="game-board" action="/" method="post">
-  <label for="guess"></label>
-  <input type="text" name="guess" class="form-control">
-  <button type="submit">Go</button>
-</form>

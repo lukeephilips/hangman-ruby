@@ -14,7 +14,7 @@ describe('The home path', {:type => :feature}) do
   end
   it('displays a hidden word') do
     expect(page).to have_content
-    expect(page).to have_content ['-','-','-','-','-','-','-']
+    expect(page).to have_content "- - - - - - -"
   end
   it('allows user to make a guess and shows users guess') do
     fill_in('guess', :with => 'w')
@@ -24,6 +24,6 @@ describe('The home path', {:type => :feature}) do
   it('allows user to make a guess and shows updated guesses array') do
     fill_in('guess', :with => 'c')
     click_button('Go')
-    expect(page).to have_content "['c','-','-','c','-','-','-']"
+    expect(page).to have_content "c - - c - - -"
   end
 end
