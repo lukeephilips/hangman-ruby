@@ -1,4 +1,4 @@
-# @@games = []
+@@games = []
 @@game = nil
 
 class Game
@@ -16,12 +16,11 @@ class Game
     @@games
   end
   define_singleton_method(:active) do
-    @@games.last
+    @@game
   end
   define_method(:save) do
-    # @@games.push(self)
+    @@games.push(self)
     @@game = self
-
   end
   define_singleton_method(:clear) do
     @@games = []

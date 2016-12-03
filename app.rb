@@ -6,13 +6,13 @@ require('pry-nav')
 
 get '/' do
   @game = Game.new()
-  # @game.save()
+  @game.save()
   @hidden = @game.hidden
   erb(:index)
 end
 
 post '/' do
-  # @game = Game.active
+  @game = Game.active
   @user_guess = params.fetch('guess')
   @game.guess(@user_guess)
   erb(:index)
